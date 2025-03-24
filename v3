@@ -1,0 +1,81 @@
+from pickle import TRUE
+
+courses = { #list dictionary 
+1: {"name": "Food Science", "duration": 16, "cost": 150, "pre_requisite": "Food technology in secondary school"},
+2: {"name": "Food Technology", "duration": 17, "cost": 280, "pre_requisite": "Food technology in secondary school"},
+3: {"name": "Material Science", "duration": 15, "cost": 250, "pre_requisite": "Materials Technology in Secondary School"},
+4: {"name": "Hard Materials", "duration": 16, "cost": 300, "pre_requisite": "Materials Technology in Secondary School"},
+5: {"name": "Digital Technologies", "duration": 18, "cost": 200, "pre_requisite": "Digital Technologies in Secondary Education"},
+6: {"name": "Robotics", "duration": 16, "cost": 280, "pre_requisite": "Digital Technologies in Secondary Education"}
+}
+#this is to restart the selection if the user does not want to confirm
+while TRUE:
+    #basic details 
+    name = input("\n\n\n\nEnter your name: ")
+    email = input("Enter your email address: ")
+
+    #display courses 
+    print('\n\nCourses - \n1 - Food Science - 16 Weeks - $150\n2 - Food Technology - 17 Weeks - 280\n3 - Material Science - 15 Weeks - $250\n4 - Hard Materials - 16 Weeks - $300\n5 - Digital Technologies - 18 Weeks - $200\n6 - Robotics - 16 Weeks - $280')
+
+    #selecting courses
+    while TRUE:
+        course_select = int(input('\nSelect a course 1-6: '))
+        while course_select > 6 :
+            print('Invalid choice, please try again')
+            course_select = int(input('\nSelect a course 1-6: '))
+            
+            #meeting pre requisite
+        requisite = input(f'Do you meet the pre-requisites for {courses[course_select]["pre_requisite"]}? (y/n): ')
+        if requisite == 'n':
+            print('You cannot chose this course.')
+            print('\n\nCourses - \n1 - Food Science - 16 Weeks - $150\n2 - Food Technology - 17 Weeks - 280\n3 - Material Science - 15 Weeks - $250\n4 - Hard Materials - 16 Weeks - $300\n5 - Digital Technologies - 18 Weeks - $200\n6 - Robotics - 16 Weeks - $280')
+            continue
+        elif requisite == 'y':
+            print('You can pick this course!')
+            break 
+        else:
+            print('invalid, please try again')
+    #asking if user needs transport
+    while TRUE:
+        transport = input('\nDo you need transport which is a shuttle bus for $80? (y/n): ')
+        if transport == 'y':
+            break
+        elif transport == 'n':
+            break
+        else:
+            print('invalid, please try again')
+            continue
+    #asking for meal preference
+    while TRUE:
+        food = input('\nWhat is your meal preference? (standard/veg/vegan): ')
+        if food == 'standard':
+            food = 'standard'
+            break
+        elif food == 'veg':
+            food = 'veg'
+            break
+        elif food == 'vegan':
+            food = 'vegan'
+            break
+        else:
+            print('invalid, please try again')
+            continue
+    #adding or removing cost of transport
+    transport_cost = 80
+    if transport == 'n':
+        transport_cost = 0
+    price = courses[course_select]['cost'] + transport_cost
+
+
+    #display details
+    print(f'\nHi {name}, you have chosen {courses[course_select]["name"]}, this course runs for {courses[course_select]["duration"]} weeks, and you will recieve the {food} option.')
+    print(f'Your total cost is - ${price}')
+
+    #confirming if this is the wanted course
+    confirm = input('\nwould you like to confirm? (y/n): ')
+    if confirm == 'y':
+        print ('Congratulations! you have been enrolled for this course.')
+        break
+    elif confirm =='n':
+        print('\nYou are restarting the selection.')
+        continue
