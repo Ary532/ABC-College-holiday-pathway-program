@@ -1,0 +1,22 @@
+print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
+
+courses = { #list dictionary 
+1: {"name": "Food Science", "duration": 16, "cost": 150, "pre_requisite": "Food technology in secondary school"},
+2: {"name": "Food Technology", "duration": 17, "cost": 280, "pre_requisite": "Food technology in secondary school"},
+3: {"name": "Material Science", "duration": 15, "cost": 250, "pre_requisite": "Materials Technology in Secondary School"},
+4: {"name": "Hard Materials", "duration": 16, "cost": 300, "pre_requisite": "Materials Technology in Secondary School"},
+5: {"name": "Digital Technologies", "duration": 18, "cost": 200, "pre_requisite": "Digital Technologies in Secondary Education"},
+6: {"name": "Robotics", "duration": 16, "cost": 280, "pre_requisite": "Digital Technologies in Secondary Education"}
+}
+
+#basic details 
+name = input("Enter your name: ")
+email = input("Enter your email address: ")
+
+#display courses 
+print('\n\nCourses - \n1 - Food Science - 16 Weeks - $150\n2 - Food Technology - 17 Weeks - 280\n3 - Material Science - 15 Weeks - $250\n4 - Hard Materials - 16 Weeks - $300\n5 - Digital Technologies - 18 Weeks - $200\n6 - Robotics - 16 Weeks - $280')
+
+course = input('\nSelect a course: ')
+if course not in courses:
+    print('Invalid choice, please try again')
+requisite = input('Do you meet the pre-requisites? ')
