@@ -39,14 +39,14 @@ courses = {  # list dictionary
         "cost": 280,
         "pre_requisite": "Digital Technologies in Secondary Education",
     },
-}
+} #using tabulate to make table
 values = [[name, *inner.values()] for name, inner in courses.items()]
 table = tabulate(values, headers=headers, tablefmt="grid")
 
 #this is to restart the selection if the user does not want to confirm
 while True:
     print('\nWelcome to the department of technology, ABC College holiday pathway program')
-    #basic details 
+    #asking for name
     while True:
         name = input("\n\nEnter your first name: ")
         if len (name) > 30:
@@ -70,10 +70,11 @@ while True:
             print('Please enter a valid number.')
             continue
         break
+    #asking for email
     while True:
         email = input("Enter your school email address: ")
         if '@ac.school.nz' in email:
-            break
+            break  
         elif '@alfristoncollege.school.nz' in email:
             break
         else:
@@ -110,7 +111,7 @@ while True:
                 print("invalid, please try again")
                 continue
             while True:
-                try:
+                try: #select course 2
                     course_select2 = int(input("\nSelect your second course 1-6: "))
                     if course_select2 == course_select:
                         print('This is the same course!')
@@ -121,6 +122,7 @@ while True:
                 except ValueError:
                     print('Please enter a valid number.')
                     continue
+                #pre req
                 requisite = input(
                     f'Do you meet the pre-requisites for {courses[course_select2]["pre_requisite"]}? (y/n): '
                 )
@@ -134,7 +136,7 @@ while True:
                     print("invalid, please try again")
                     continue
                 while True:
-                    try:
+                    try: #course select 3
                         course_select3 = int(input("\nSelect your third course 1-6: "))
                         if course_select3 == course_select:
                             print('This is the same course!')
@@ -148,6 +150,7 @@ while True:
                     except ValueError:
                         print('Please enter a valid number.')
                         continue
+                    #pre req
                     requisite = input(
                         f'Do you meet the pre-requisites for {courses[course_select3]["pre_requisite"]}? (y/n): '
                     )
@@ -222,4 +225,4 @@ while True:
         continue
     if confirm == 'y':
         print (f'Congratulations! {name} you have been enrolled for these courses, your receipt will be emailed to you at {email}.')
-    break
+    break  
