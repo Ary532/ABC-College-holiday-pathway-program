@@ -195,7 +195,7 @@ while True:
             print('invalid, please try again')
             continue
     # adding or removing cost of transport
-    transport_cost = 80
+    transport_cost = 240
     if transport == "n":
         transport_cost = 0
     price = (
