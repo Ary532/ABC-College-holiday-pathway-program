@@ -170,11 +170,13 @@ while True:
     # asking if user needs transport
     while True:
         transport = input(
-            "\nDo you need transport which is $80 for each course? (y/n): "
+            "\nDo you need transport which is a shuttle bus for $80? (y/n): "
         )
         if transport == "y":
+            transport_display = ('will be taking the shuttle.')
             break
         elif transport == "n":
+            transport_display = ('will not be taking the shuttle.')
             break
         else:
             print("invalid, please try again")
