@@ -46,7 +46,6 @@ table = tabulate(values, headers=headers, tablefmt="grid")
 #this is to restart the selection if the user does not want to confirm
 while True:
     print('\nWelcome to the department of technology, ABC College holiday pathway program')
-    
     #asking for name
     while True:
         name = input("\n\nEnter your first name: ")
@@ -57,7 +56,6 @@ while True:
         if name.isalpha():
             break
         print('Invalid character, please use letters only.')
-
     #asking user for age
     while True:
         try:
@@ -72,7 +70,6 @@ while True:
             print('Please enter a valid number.')
             continue
         break
-
     #asking for email
     while True:
         email = input("Enter your school email address: ")
@@ -113,7 +110,6 @@ while True:
             else:
                 print("invalid, please try again")
                 continue
-
             while True:
                 try: #select course 2
                     course_select2 = int(input("\nSelect your second course 1-6: "))
@@ -126,7 +122,6 @@ while True:
                 except ValueError:
                     print('Please enter a valid number.')
                     continue
-
                 #pre req
                 requisite = input(
                     f'Do you meet the pre-requisites for {courses[course_select2]["pre_requisite"]}? (y/n): '
@@ -140,7 +135,6 @@ while True:
                 else:
                     print("invalid, please try again")
                     continue
-
                 while True:
                     try: #course select 3
                         course_select3 = int(input("\nSelect your third course 1-6: "))
@@ -156,7 +150,6 @@ while True:
                     except ValueError:
                         print('Please enter a valid number.')
                         continue
-
                     #pre req
                     requisite = input(
                         f'Do you meet the pre-requisites for {courses[course_select3]["pre_requisite"]}? (y/n): '
@@ -174,22 +167,20 @@ while True:
                 break
             break
         break #breaking out of all loops if it reaches this point
-    
     # asking if user needs transport
     while True:
         transport = input(
             "\nDo you need transport which is a shuttle bus for $80? (y/n): "
         )
         if transport == "y":
-            transport = ('will be taking the shuttle.')
+            transport_display = ('will be taking the shuttle.')
             break
         elif transport == "n":
-            transport = ('will not be taking the shuttle.')
+            transport_display = ('will not be taking the shuttle.')
             break
         else:
             print("invalid, please try again")
             continue
-
             #asking for meal preference
     while True:
         food = input('\nWhat is your meal preference? \n1 - standard\n2 - veg\n3 - vegan\n\nselect a meal 1-3: ')
@@ -205,7 +196,6 @@ while True:
         else:
             print('invalid, please try again')
             continue
-
     # adding or removing cost of transport
     transport_cost = 240
     if transport == "n":
@@ -216,7 +206,7 @@ while True:
         + courses[course_select2]["cost"]
         + courses[course_select3]["cost"]
     )
-
+    
     #deciding which course is longer
     if courses[course_select]["duration"] > courses[course_select2]["duration"] and courses[course_select]["duration"] > courses[course_select3]["duration"]:
         duration = courses[course_select]["duration"]
@@ -225,7 +215,7 @@ while True:
     elif courses[course_select3]["duration"] > courses[course_select]["duration"] and courses[course_select3]["duration"] > courses[course_select2]["duration"]:
         duration = courses[course_select3]["duration"]
     # display details
-    print(f'\nHi {name}, you have chosen {courses[course_select]["name"]}, {courses[course_select2]["name"]} and {courses[course_select3]["name"]} the total time you will be going to course is {duration} weeks you will be recieving the {food} option of food and you {transport} ')
+    print(f'\nHi {name}, you have chosen {courses[course_select]["name"]}, {courses[course_select2]["name"]} and {courses[course_select3]["name"]} the total time you will be going to course is {duration} weeks you will be recieving the {food} option of food and you {transport_display} ')
     print(f"Your total cost is - ${price}")
         
     #confirming if this is the wanted course
@@ -233,9 +223,9 @@ while True:
     if confirm =='n':
         print('\nYou are restarting the selection.')
         continue
-    if confirm != 'y' and confirm != 'n':
+    elif confirm != 'y' and confirm != 'n':
         print('Invalid, restarting the selection.')
         continue
-    if confirm == 'y':
+    elif confirm == 'y':
         print (f'Congratulations! {name} you have been enrolled for these courses, your receipt will be emailed to you at {email}.')
-    break  
+    break 
